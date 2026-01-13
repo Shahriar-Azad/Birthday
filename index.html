@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<link rel="stylesheet" href="style.css">
+<iframe src="audio-player.html" style="display:none;" id="audioPlayer"></iframe>
 </head>
 <body>
-    <div class="cursor"></div>
-    <div class="container">
-        <h1>Happy Birthday Priya💗</h1>
-        <div class="greeting"></div>
-        <button class="cta-button">Click to Enter Our World 💕</button>
-    </div>
+<!-- Music Toggle Button -->
+<div class="music-toggle" id="musicToggle">
+    <svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M9 18V5l12-2v13M9 18c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3zm12-2c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3z"/>
+        <line class="mute-line" x1="2" y1="2" x2="22" y2="22" stroke-width="2" style="display: none;"/>
+    </svg>
+</div>
 
-    <script src="script.js">
-        
-    </script>
+<!-- Hidden Audio Element -->
+<audio id="birthdayMusic" loop>
+    <source src="happy-birthday.mp3" type="audio/mpeg">
+</audio>
+
+<div class="cursor"></div>
+<div class="container">
+<h1>Happy Birthday Nazifa💗</h1>
+<div class="greeting"></div>
+<button class="cta-button">Click to Enter Our World 💕</button>
+</div>
+<script src="script.js"></script>
 </body>
 </html>

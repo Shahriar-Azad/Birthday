@@ -1,3 +1,32 @@
+// Music Toggle Functionality
+const musicToggle = document.getElementById('musicToggle');
+const birthdayMusic = document.getElementById('birthdayMusic');
+let isMusicPlaying = false;
+
+musicToggle.addEventListener('click', () => {
+    if (isMusicPlaying) {
+        birthdayMusic.pause();
+        musicToggle.classList.add('muted');
+        isMusicPlaying = false;
+    } else {
+        birthdayMusic.play();
+        musicToggle.classList.remove('muted');
+        isMusicPlaying = true;
+    }
+});
+
+// Try to autoplay on user interaction
+document.body.addEventListener('click', () => {
+    if (!isMusicPlaying) {
+        birthdayMusic.play().then(() => {
+            isMusicPlaying = true;
+            musicToggle.classList.remove('muted');
+        }).catch(() => {
+            // Autoplay prevented, user needs to click music button
+        });
+    }
+}, { once: true });
+
 // Cursor following effect
 const cursor = document.querySelector('.cursor');
 document.addEventListener('mousemove', (e) => {
@@ -20,6 +49,7 @@ function typeGreeting() {
 
 // Create floating elements
 const floatingElements = ['💖', '✨', '🌸', '💫', '💕'];
+
 function createFloating() {
     const element = document.createElement('div');
     element.className = 'floating';
@@ -66,30 +96,29 @@ window.addEventListener('load', () => {
 });
 
 // Hover effects
-       // Hover effects
-       document.querySelectorAll('.cta-button').forEach(button => {
-        button.addEventListener('mouseenter', () => {
-            gsap.to(button, {
-                scale: 1.1,
-                duration: 0.3
-            });
-        });
-
-        button.addEventListener('mouseleave', () => {
-            gsap.to(button, {
-                scale: 1,
-                duration: 0.3
-            });
-        });
-
-        // Smooth page transition on click
-        button.addEventListener('click', () => {
-            gsap.to('body', {
-                opacity: 0,
-                duration: 1,
-                onComplete: () => {
-                    window.location.href = 'cause.html'; // Replace with the actual URL of the next page
-                }
-            });
+document.querySelectorAll('.cta-button').forEach(button => {
+    button.addEventListener('mouseenter', () => {
+        gsap.to(button, {
+            scale: 1.1,
+            duration: 0.3
         });
     });
+
+    button.addEventListener('mouseleave', () => {
+        gsap.to(button, {
+            scale: 1,
+            duration: 0.3
+        });
+    });
+
+    // Smooth page transition on click
+    button.addEventListener('click', () => {
+        gsap.to('body', {
+            opacity: 0,
+            duration: 1,
+            onComplete: () => {
+                window.location.href = 'cause.html';
+            }
+        });
+    });
+});

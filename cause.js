@@ -1,22 +1,49 @@
- // Reasons database
- const reasons = [
+// Music Toggle Functionality
+const musicToggle = document.getElementById('musicToggle');
+const birthdayMusic = document.getElementById('birthdayMusic');
+let isMusicPlaying = localStorage.getItem('musicPlaying') === 'true';
+
+// Set initial state
+if (isMusicPlaying) {
+    birthdayMusic.play();
+    musicToggle.classList.remove('muted');
+} else {
+    musicToggle.classList.add('muted');
+}
+
+musicToggle.addEventListener('click', () => {
+    if (isMusicPlaying) {
+        birthdayMusic.pause();
+        musicToggle.classList.add('muted');
+        isMusicPlaying = false;
+        localStorage.setItem('musicPlaying', 'false');
+    } else {
+        birthdayMusic.play();
+        musicToggle.classList.remove('muted');
+        isMusicPlaying = true;
+        localStorage.setItem('musicPlaying', 'true');
+    }
+});
+
+// Reasons database
+const reasons = [
     { 
-        text: "You’re such a kind and wonderful person, and I feel lucky to share such a good bond with you. 💖", 
+        text: "I SEE HOU YOU'RE TRYING, EVEN WHEN YOU DON'T TALK ABOUT IT. IAM PROUD OF YOU 💖", 
         emoji: "🌟",
         gif: "gif1.gif"
     },
     { 
-        text: "May your day be filled with love, laughter, and endless joy. 🌸 ", 
+        text: "i hope beautiful things happen to you and when they do, i hope you realise you are worthy of every single one if them. 🌸 ", 
         emoji: "💗",
         gif: "gif2.gif"
     },
     { 
-        text: "Wishing you success, happiness, and everything your heart desires. ✨ ", 
+        text: "look at you! I am proud of how you're handeling things, You look so damn gorgeousss!!✨ ", 
         emoji: "💕",
         gif: "gif1.gif"
     },
     { 
-        text: "Stay the amazing girl you are—always spreading positivity around. Have the happiest year ahead! 🥳 ", 
+        text: "Look at the stars Look how they shine for you 🥳 ", 
         emoji: "🌟",
         gif: "gif2.gif"
     }
@@ -83,7 +110,7 @@ function displayNewReason() {
                             opacity: 0,
                             duration: 1,
                             onComplete: () => {
-                                window.location.href = 'last.html'; // Replace with the actual URL of the next page
+                                window.location.href = 'last.html';
                             }
                         });
                     });
@@ -98,9 +125,7 @@ function displayNewReason() {
             isTransitioning = false;
         }, 500);
     } else {
-        // Handle navigation to new page or section
         window.location.href = "#storylane";
-        // Or trigger your next page functionality
     }
 }
 
@@ -115,7 +140,7 @@ shuffleButton.addEventListener('click', () => {
     displayNewReason();
 });
 
-// Floating elements function (same as before)
+// Floating elements function
 function createFloatingElement() {
     const elements = ['🌸', '✨', '💖', '🦋', '⭐'];
     const element = document.createElement('div');
@@ -134,7 +159,7 @@ function createFloatingElement() {
     });
 }
 
-// Custom cursor (same as before)
+// Custom cursor
 const cursor = document.querySelector('.custom-cursor');
 document.addEventListener('mousemove', (e) => {
     gsap.to(cursor, {
